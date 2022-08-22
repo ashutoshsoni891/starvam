@@ -1,0 +1,24 @@
+{
+  "name": "vamstar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsoa:gen": "yarn tsoa swagger -c ./api/tsoa.json && yarn tsoa routes -c ./api/tsoa.json",
+    "start-local": "TZ='UTC' ENVIRONMENT=local npm start"
+  },
+  "author": "ash",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "@types/mongoose": "^5.11.97",
+    "@types/uuid": "^8.3.4",
+    "@types/winston": "^2.4.4",
+    "express": "^4.18.1",
+    "mongoose": "^6.5.2",
+    "tsoa": "^4.1.1",
+    "uuid": "^8.3.2",
+    "winston": "^3.8.1"
+  }
+}
