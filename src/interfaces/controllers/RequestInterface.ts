@@ -6,7 +6,7 @@ export interface IGetBMIRequest{
     pagination : Ipagination
 }
 export interface IUpdateBMIRequest{
-    BMI : IUpdateBMI[]
+    BMI : IUpdateBMIReq[]
    
 }
 
@@ -23,18 +23,18 @@ export interface Ipagination {
 }
 export interface GetBMI{
 
+    uuid? : string
     category? : string
     health_risk? : string
-    uuid? : string
     bmi_index? : any
     height? : any
     weight? : any
 }
 
-export interface IUpdateBMI{
+export interface IUpdateBMIReq{
+    uuid : string
     category? : string
     health_risk? : string
-    uuid? : string
     bmi_index? : any
     height? : any
     weight? : any

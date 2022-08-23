@@ -120,8 +120,8 @@ export async function addBMI(
 
 export async function deleteBMI(
     this: IBMIModel,
-    id: string
+    uuid: string
   ): Promise<any> {
-    await this.deleteOne({ uuid: id });
+    await this.deleteOne({ uuid: uuid });
     return true
   }

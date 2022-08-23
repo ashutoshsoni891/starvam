@@ -1,0 +1,424 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"IAddBMIReq": {
+				"properties": {
+					"gender": {
+						"type": "string"
+					},
+					"height": {
+						"type": "number",
+						"format": "double"
+					},
+					"weight": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"gender",
+					"height",
+					"weight"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"IAddBMIArrayReq": {
+				"properties": {
+					"BMI": {
+						"items": {
+							"$ref": "#/components/schemas/IAddBMIReq"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"BMI"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"GetBMI": {
+				"properties": {
+					"uuid": {
+						"type": "string"
+					},
+					"category": {
+						"type": "string"
+					},
+					"health_risk": {
+						"type": "string"
+					},
+					"bmi_index": {},
+					"height": {},
+					"weight": {}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"Ipagination": {
+				"properties": {
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"page_size": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"page",
+					"page_size"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"IGetBMIRequest": {
+				"properties": {
+					"filter": {
+						"$ref": "#/components/schemas/GetBMI"
+					},
+					"pagination": {
+						"$ref": "#/components/schemas/Ipagination"
+					}
+				},
+				"required": [
+					"filter",
+					"pagination"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"IUpdateBMIReq": {
+				"properties": {
+					"uuid": {
+						"type": "string"
+					},
+					"category": {
+						"type": "string"
+					},
+					"health_risk": {
+						"type": "string"
+					},
+					"bmi_index": {},
+					"height": {},
+					"weight": {}
+				},
+				"required": [
+					"uuid"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"IUpdateBMIRequest": {
+				"properties": {
+					"BMI": {
+						"items": {
+							"$ref": "#/components/schemas/IUpdateBMIReq"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"BMI"
+				],
+				"type": "object",
+				"additionalProperties": true
+			}
+		},
+		"securitySchemes": {
+			"jwt": {
+				"type": "apiKey",
+				"name": "Authorization",
+				"in": "header"
+			}
+		}
+	},
+	"info": {
+		"title": "vamstar",
+		"version": "1.0.0",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "ash"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/BMI/addBMI": {
+			"post": {
+				"operationId": "AddBMI",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"properties": {
+												"data": {},
+												"error": {
+													"items": {},
+													"type": "array"
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"data",
+												"error",
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"data": {
+													"items": {},
+													"type": "array"
+												},
+												"error": {},
+												"success": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"data",
+												"error",
+												"success"
+											],
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IAddBMIArrayReq"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/BMI/getBMI": {
+			"post": {
+				"operationId": "GetBMI",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"properties": {
+												"data": {},
+												"error": {
+													"items": {},
+													"type": "array"
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"data",
+												"error",
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"data": {
+													"items": {},
+													"type": "array"
+												},
+												"error": {},
+												"success": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"data",
+												"error",
+												"success"
+											],
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IGetBMIRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/BMI/updateBMI": {
+			"post": {
+				"operationId": "UpdateBMI",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"properties": {
+												"data": {},
+												"error": {
+													"items": {},
+													"type": "array"
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"data",
+												"error",
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"data": {
+													"items": {},
+													"type": "array"
+												},
+												"error": {},
+												"success": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"data",
+												"error",
+												"success"
+											],
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IUpdateBMIRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/BMI/deleteBMI": {
+			"post": {
+				"operationId": "DeleteBMI",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"properties": {
+												"data": {},
+												"error": {
+													"items": {},
+													"type": "array"
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"data",
+												"error",
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"data": {
+													"items": {},
+													"type": "array"
+												},
+												"error": {},
+												"success": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"data",
+												"error",
+												"success"
+											],
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "uuid",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "http://localhost:4001/api/v1"
+		}
+	]
+}

@@ -9,7 +9,7 @@ export default class DeleteBMI{
         this.IBMIRepository = repo
     }
 
-    updateBMI(id :any ){
-        return this.IBMIRepository.deleteBMI(id)
+    deleteBMI(uuid :any ){
+        return this.IBMIRepository.deleteBMI(uuid)
     }
 }

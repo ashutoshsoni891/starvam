@@ -1,0 +1,38 @@
+{
+    "swagger": {
+    
+      
+    },
+      "basePath": "/auth/api/v1",
+      "entryFile": "./src/infrastructure/server.ts",
+      "specVersion": 3,
+      "outputDirectory": "./api/dist",
+      "controllerPathGlobs": [
+        "src/interfaces/controllers/**/*Controller.ts"
+      ],
+      "specMerging": "recursive",
+      "spec": {
+         "securityDefinitions": {
+        "jwt": {
+          "type": "apiKey",
+          "name": "Authorization",
+          "in": "header"
+        }
+      },
+        "spec":{
+        "servers": [
+          {
+            "url": "http://localhost:4001/api/v1"
+          }
+         
+        ]},
+        "specVersion": 3,
+        "outputDirectory": "./api/dist"
+      },
+    "routes": {
+      "basePath": "/api/v1",  
+      "entryFile": "./src/infrastructure/server.ts",
+      "routesDir": "./src/infrastructure/routes",
+      "middleware": "express"
+    }
+  }

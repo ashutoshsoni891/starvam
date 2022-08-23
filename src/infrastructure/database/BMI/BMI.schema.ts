@@ -18,7 +18,7 @@ const BMISchema = new Schema({
         type : Number,
         required : true
     },
-    bmi :{
+    bmi_index :{
         type : Number,
         required : true
     },

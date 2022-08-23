@@ -20,7 +20,7 @@ export class CategoryController extends Controller{
     
       }
 
-    @Security("jwt")
+    // @Security("jwt")
     @Post("addBMI")
     async addBMI(@Body() data: IAddBMIArrayReq, @Request() request: any){
       
@@ -36,7 +36,7 @@ export class CategoryController extends Controller{
         }
     }
 
-    @Security("jwt")
+    // @Security("jwt")
     @Post("getBMI")
     async getBMI(@Body() filter: IGetBMIRequest, @Request() request: any){
       
@@ -53,7 +53,7 @@ export class CategoryController extends Controller{
         }
     }
 
-    @Security("jwt")
+    // @Security("jwt")
     @Post("updateBMI")
     async updateBMI(@Body() data:IUpdateBMIRequest , @Request() request: any){
       
@@ -70,15 +70,15 @@ export class CategoryController extends Controller{
         }
     }
     
-    @Security("jwt")
+    // @Security("jwt")
     @Post("deleteBMI")
-    async deleteBMI(@Query() id : any , @Request() request: any){
+    async deleteBMI(@Query() uuid : any , @Request() request: any){
       
         try {
             
 
             let UseCase = new DeleteBMI(this.bmiRepository)
-            let result = await UseCase.deleteBMI(id )
+            let result = await UseCase.deleteBMI(uuid )
                                                                           
             return new Response().sendResponseSuccess(result, true);
         } catch (Error : any) {

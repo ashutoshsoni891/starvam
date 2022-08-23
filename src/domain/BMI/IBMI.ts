@@ -15,12 +15,10 @@ export interface IAddBMI{
     
 }
 
-
-
 export interface IUpdateBMIDomain{
+    uuid : string
     category? : string
     health_risk? : string
-    uuid : string
     bmi_index? : any
     height? : any
     weight? : any
